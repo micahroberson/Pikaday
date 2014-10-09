@@ -15,12 +15,8 @@
         try { moment = require('moment'); } catch (e) {}
         module.exports = factory(moment);
     } else if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(function (req)
-        {
-            // Load moment.js as an optional dependency
-            var id = 'moment';
-            moment = req.defined && req.defined(id) ? req(id) : undefined;
+        // AMD
+        define(['moment'], function(moment) {
             return factory(moment);
         });
     } else {
